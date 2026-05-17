@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOOLS</title>
+    <link rel="icon" href="img/icone.png" type="image/x-icon">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    
+</head>
+<body>
+    <!--menu-->
+    <header>
+        <nav class="navbar fixed-top bg-body-tertiary" id="menu">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" id="logo">
+                    <img src="img/icone.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                    TOOLS
+                </a>
+            </div>
+        </nav> 
+    </header>
+    <main>
+        <section class="container">
+            <h1 class="title-h1">CALCULOS</h1>
+            <!--Calculo 1-->
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"  id="title-h2">
+                            CALCLIB
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <div class="container">   
+                                <!--Dados de diametro-->
+                                <div class="row inputCalc1"  >   
+                                    <div class="col-12">
+                                        <h3 class="title-h3"> </h3>
+                                        <form class="row row-cols-lg-auto g-3 align-items-center border border-1 border-secondary-subtle p-3 rounded-3">
+                                            <div class="input-group mt-0 w-37">
+                                                <span class="input-group-text">Espessura</span>
+                                                <input type="text" class="form-control" aria-label="Esp." id="espessura">
+                                                <span class="input-group-text">mm</span>
+                                            </div>
+                                            <div class="input-group mt-0 w-37">
+                                                <span class="input-group-text">Ø Externo</span>
+                                                <input type="text" class="form-control" aria-label="Ø Externo" id="diamExt">
+                                                <span class="input-group-text">mm</span>
+                                            </div>
+                                            <div class="input-group mt-3 w-50">
+                                                <span class="input-group-text">Ângulo</span>
+                                                <input type="text" class="form-control" aria-label="Ângulo" id="angulo">
+                                                <span class="input-group-text">°</span>
+                                            </div>
+                                            <div class="input-group mt-3 w-25">
+                                                <span class="input-group-text">Junta</span>
+                                                <input type="text" class="form-control" aria-label="Junta" id="junta">
+                                                <span class="input-group-text">mm</span>
+                                            </div>
+                                            <div class="col-3 w-25 mt-3 input-diametros">
+                                                <button type="button" class="btn btn-outline-primary ms-0 w-75" id="btnAddDiam">Add Dados</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--Dados de Formatos-->
+                                <div class="row inputCalc1">   
+                                    <div class="col-12">
+                                        <h3 class="title-h3"> </h3>
+                                        <form class="row row-cols-lg-auto g-3 align-items-center border border-1 border-secondary-subtle p-3 rounded-3">
+                                            <div class="input-group mt-0 w-37">
+                                                <span class="input-group-text">Corda Externa</span>
+                                                <input type="text" class="form-control" aria-label="Corda Externa" id="cordaExterna">
+                                                <span class="input-group-text">mm</span>
+                                            </div>
+                                            <div class="input-group mt-0 w-37">
+                                                <span class="input-group-text">Corda Interna</span>
+                                                <input type="text" class="form-control" aria-label="Corda Interna" id="cordaInterna">
+                                                <span class="input-group-text">mm</span>
+                                            </div>
+
+                                            <div class="col-3 w-25  mt-0">
+                                                <button type="button" class="btn btn-outline-primary ms-4 w-75 mb-2" id="btnAddTijolos">Add Dados</button>
+                                                <button type="button" class="btn btn-outline-danger ms-4 w-75" id="btnLimparTijolos">Limpar Tabela</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--Tabela de diametros e espessura-->
+                                <div class="row" id="tabelaDiam">
+                                    <div class="col-12 d-flex gap-3 align-items-start">
+                                        <table class="table border border-2 border-secondary-subtle w-100" id="tbDiametros">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">Espessura</th>
+                                                    <th scope="col">Externo</th>
+                                                    <th scope="col">Interno</th>
+                                                    <th scope="col">Ang</th>
+                                                    <th scope="col">Junta</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="table-dark">Diâmetro</th>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-12 w-37 d-flex justify-content-center mb-3 mt-0 mx-auto">
+                                        <button type="button" class="btn btn-success w-75" id="btnCalcularComp">CALCULAR</button>
+                                    </div>
+                                    <div class="col-12 w-37 d-flex justify-content-center mb-3 mt-0 mx-auto">
+                                        <button type="button" class="btn btn-warning w-100" id="btnlimparCalculo">APAGAR</button>
+                                    </div>
+                                            
+                                    <div class="col-12">
+                                        <table class="table border border-2 border-secondary-subtle " id="tbTijolos">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Corda Externa</th>
+                                                    <th scope="col">Corda Interna</th>
+                                                    <th scope="col">Ø Fechamento</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="cards-grid d-flex flex-wrap gap-3">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fim do Calculo 1-->
+            <!--Calculo 2-->
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"  id="title-h2">
+                            ÂNGULO E DIÂMETRO DE FECHAMENTO
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <ul>
+                                <li><a href="#">Calculadora de Carga</a></li>
+                                <li><a href="#">Tabela de Materiais</a></li>
+                                <li><a href="#">Simulador de Estruturas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fim do Calculo 2-->
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script> 
+</body>
+</html>
+
+<!--
+<h1>ENT - Ferramentas de Engenharia</h1>
+<p>Bem-vindo à página de ferramentas de engenharia da ENT! Aqui você encontrará uma variedade de recursos e ferramentas úteis para engenheiros em diferentes disciplinas. Explore as opções abaixo para acessar as ferramentas disponíveis:</p>            
+            if(isNaN(espessura) || isNaN(diamExt)){
+                alert('Por favor, insira valores numéricos válidos para espessura e diâmetro externo.');
+                document.getElementById('espessura').focus();
+                return;
+            }
+                                            <div class="card border-success mb-3" style="max-width: 18rem;">
+                                                <div class="card-header bg-transparent border-success">Header</div>
+                                                <div class="card-body text-success">
+                                                    <h5 class="card-title">Success card title</h5>
+                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                                </div>
+                                                
+                                            </div>
+
+-->
