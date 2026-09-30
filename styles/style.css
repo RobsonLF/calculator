@@ -24,7 +24,7 @@
 }
 
 body{
-    background: var(--color6);
+    background: var(--color7);
 }
 
 main{
@@ -39,13 +39,15 @@ main{
   display: flex;
   align-items: center;
   gap: 8px;
-    color: var(--color2);
-    font-family: var(--font-primary);
-    font-weight: 700;
-    width: 50px;
-    height: 50px;
+  color: var(--color2);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  width: 50px;
+  height: 50px;
 }
-
+#footer{
+  padding-left: 12px;
+}
 .accordion-button:not(.collapsed){
   background-color: var(--color2);
   color:var(--color7);
