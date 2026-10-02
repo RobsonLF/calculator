@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --font-Primary: 'DM Sans', sans-serif;
+    --font-Secondery: 'Inter', sans-serif;
+    --font-Tertiary: 'Montserrat', sans-serif;
+    --font-Quaternary: 'Space Grotesk', sans-serif;
+    --sidebar: #438494;
+    --page: #e5e5e5;
+    --surface: #f8fafa;
+    --ink: #202b32;
+    --muted: #91a1a9;
+    --line: #d4d9db;
+    
+;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-Primary);
+}
+.app-shell{
+    display: flex;
+    min-height: 100vh;
+}
+.sidebar{
+    width:254px;
+    flex: 0 0 254px;
+    background: var(--sidebar);
+    color: #d8e8eb;
+
+}
+.brand{
+    color:#fff;
+    font-family: var(--font-Quaternary);
+    font-size: 22px;
+    text-align: center;
+    padding: 15px 15px;
+}
+.sidebar-rule{
+    height: 1px;
+    margin: 0px -6px 30px;
+    background: rgba(255,255,255,.28);
+}
+.sidebar-rule-line{
+    padding-left: 0px;
+    padding-right: 0px;
+}
