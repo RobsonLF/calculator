@@ -30,7 +30,7 @@ body{
 .titulo2{
     font-family: var(--font-Quaternary);
     color: var(--sidebar);
-    padding:0px 0px 15px 0px;
+    padding:20px 0px 15px 0px;
 }
 .app-shell{
     display: flex;
@@ -135,4 +135,15 @@ body{
 }
 .section-content{
     padding:30px;
+}
+
+@media (max-width: 768px){
+    .sidebar{
+        display: none;
+    }
+
+    .inputcalc1{
+        width: 100%;
+        margin: 0 auto;
+    }
 }

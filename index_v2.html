@@ -39,8 +39,8 @@
             <section class="section-content" aria-label="Calclib">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-10">
-                            <h2 class="titulo2">Input</h2>
+                        <div class="col-12 inputcalc1">
+                            <h2 class="titulo2">Dados do Anel</h2>
                             <form class="row row-cols-sm-auto g-2 align-items-center border border-1 border-secondary-subtle p-2 rounded-1">
                                 <div class="input-group input-group-sm mt-0 mb-2 w-50">
                                     <span class="input-group-text">Espessura</span>
@@ -62,11 +62,33 @@
                                     <input type="text" class="form-control" aria-label="Junta" id="junta">
                                     <span class="input-group-text">mm</span>
                                 </div>
-                                <button type="button" class="btn btn-outline-primary btn-sm mt-0 mb-1 w-75 mx-auto" id="btnAddDiam" >Add Dados</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm mt-0 mb-1 w-25 mx-auto" id="btnAddDiam" >Adicionar</button>
+                                <button type="button" class="btn btn-outline-danger btn-sm mt-0 mb-1 w-25 mx-auto" id="btnLimparDiam" >Limpar</button>
                             </form>
                         </div>
                     </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 inputcalc1">
+                            <h2 class="titulo2">Dados do Tijolo</h2>
+                            <form class="row row-cols-sm-auto g-2 align-items-center border border-1 border-secondary-subtle p-2 rounded-1">
+                                <div class="input-group input-group-sm mt-0 mb-2 w-50">
+                                    <span class="input-group-text">Corda Ext.</span>
+                                    <input type="text" class="form-control" aria-label="Corda Externa" id="cordaExterna">
+                                    <span class="input-group-text">mm</span>
+                                </div>
+                                <div class="input-group input-group-sm mt-0 mb-2 w-50">
+                                    <span class="input-group-text">Corda Int.</span>
+                                    <input type="text" class="form-control" aria-label="Corda Interna" id="cordaInterna">
+                                    <span class="input-group-text">mm</span>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm mt-0 mb-1 w-25 mx-auto" id="btnAddTijolos" >Adicionar</button>
+                                <button type="button" class="btn btn-outline-danger btn-sm mt-0 mb-1 w-25 mx-auto" id="btnLimparTijolos" >Limpar</button>
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
+
             </section>
             
         </main>
