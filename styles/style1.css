@@ -7,7 +7,8 @@
     --font-Tertiary: 'Montserrat', sans-serif;
     --font-Quaternary: 'Space Grotesk', sans-serif;
     --sidebar: #438494;
-    --page: #e5e5e5;
+    --topbar: #e5e5e5;
+    --page:#ffffff;
     --surface: #f8fafa;
     --ink: #202b32;
     --muted: #91a1a9;
@@ -22,9 +23,14 @@
 }
 body{
     margin: 0;
-    background: var(--page);
+    background: var(--topbar);
     color: var(--ink);
     font-family: var(--font-Primary);
+}
+.titulo2{
+    font-family: var(--font-Quaternary);
+    color: var(--sidebar);
+    padding:0px 0px 15px 0px;
 }
 .app-shell{
     display: flex;
@@ -93,5 +99,40 @@ body{
     border-right: 16px solid var(--page);
     content: "";
 }
-
-
+.main-content{
+    min-width: 0px;
+    flex: 1;
+    overflow: hidden;
+}
+.topbar{
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding:15px 27px;
+    border-bottom: 1px solid var(--line);
+    background: var(--topbar);
+    
+}
+.topbar h1{
+    margin: 0px;
+    color: var(--sidebar);
+    font-family: var(--font-Quaternary);
+    font-size: 22px;
+    font-weight: 500;
+}
+.topbar-actions{
+    display: flex;
+    gap: 19px;
+    margin-left: auto;
+}
+.topbar-actions button{
+    padding: 0px;
+    border: 0px;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 20px;
+}
+.section-content{
+    padding:30px;
+}

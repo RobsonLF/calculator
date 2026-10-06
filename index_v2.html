@@ -22,14 +22,54 @@
             </div>
             <div class="sidebar-rule sidebar-rule-line"></div>
             <nav class="sidebar-nav" arial-label="Navegação principal">
-                <a class="nav-item active" href="#"><i class="bi bi-calculator"></i><span>Calclib</span></a>
-                <a class="nav-item" href="#"><i class="bi bi-rulers"></i><span>Conversor</span></a>
-                <a class="nav-item" href="#"><i class="bi bi-code"></i><span>Sistema Numérico</span></a>
+                <a class="nav-item active" href="./index_v2.html"><i class="bi bi-calculator"></i><span>Calclib</span></a>
+                <a class="nav-item" href="./pages/conversor.html"><i class="bi bi-rulers"></i><span>Conversor</span></a>
+                <a class="nav-item" href="./pages/sistemanumerico.html"><i class="bi bi-code"></i><span>Sistema Numérico</span></a>
                 <a class="nav-item" href="#"><i class="bi bi-map"></i><span>Fuso Horário</span></a>
                 <a class="nav-item" href="#"><i class="bi bi-graph-up"></i><span>Análise Combinatória</span></a>
             </nav>
-
         </aside>
+        <main class="main-content" id="calclib">
+            <header class="topbar">
+                <h1>Calclib</h1>
+                <div class="topbar-actions">
+                    <button type="button" aria-label="Perfil"><i class="bi bi-person-circle"></i></button>
+                </div>
+            </header>
+            <section class="section-content" aria-label="Calclib">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <h2 class="titulo2">Input</h2>
+                            <form class="row row-cols-sm-auto g-2 align-items-center border border-1 border-secondary-subtle p-2 rounded-1">
+                                <div class="input-group input-group-sm mt-0 mb-2 w-50">
+                                    <span class="input-group-text">Espessura</span>
+                                    <input type="text" class="form-control" aria-label="Esp." id="espessura">
+                                    <span class="input-group-text">mm</span>
+                                </div>
+                                <div class="input-group input-group-sm mt-0 mb-2 w-50">
+                                    <span class="input-group-text">Ø Externo</span>
+                                    <input type="text" class="form-control" aria-label="Ø Externo" id="diamExt">
+                                    <span class="input-group-text">mm</span>
+                                </div>
+                                <div class="input-group input-group-sm mt-0 mb-2 w-50">
+                                    <span class="input-group-text">Ângulo</span>
+                                    <input type="text" class="form-control" aria-label="Angulo" id="angulo">
+                                    <span class="input-group-text">°</span>
+                                </div>
+                                <div class="input-group input-group-sm mt-0 mb-2 w-50">
+                                    <span class="input-group-text">Junta</span>
+                                    <input type="text" class="form-control" aria-label="Junta" id="junta">
+                                    <span class="input-group-text">mm</span>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm mt-0 mb-1 w-75 mx-auto" id="btnAddDiam" >Add Dados</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
