@@ -9,8 +9,9 @@ function AddDadosTabelaDiam(){
     const diamExterno = parseFloat(document.querySelector('#diamExt').value);
     const angulo = parseFloat(document.querySelector('#angulo').value);
     const junta = parseFloat(document.querySelector('#junta').value);
-    const tabela = document.querySelector('tabelaDiam');
-
+    const tabela = document.querySelector('#tabelaDiam');
+    const linha = tabela.tBodies[0].rows[0];
+    
     if (isNaN(espessura)){
         window.alert('Por favor, insira um valor numérico válido para a espessura.');
         document.querySelector('#espessura').focus();
@@ -30,6 +31,21 @@ function AddDadosTabelaDiam(){
         document.querySelector('#junta').value = 0;
         return;
     }
-
+    const diamInterno = diamExterno - (2*espessura);
+    if (diamInterno <= 0){
+        window.alert('O diâmetro interno calculado é inválido. Verifique os valores de espessura e diâmetro externo.');
+        document.querySelector('#espessura').value = '';
+        document.querySelector('#diamExt').value = '';
+        document.querySelector('#espessura').focus();
+        return;
+    }
+    
+    
+    linha.cells[1].innerText = espessura;
+    linha.cells[2].innerText = diamExterno;
+    linha.cells[3].innerText = diamInterno;
+    linha.cells[4].innerText = angulo;
+    linha.cells[5].innerText = junta;
+    
 }
 

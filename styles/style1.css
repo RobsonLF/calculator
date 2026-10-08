@@ -137,6 +137,9 @@ body{
     padding:30px;
 }
 
+#tabelaDiam{
+    text-align: center;
+}
 @media (max-width: 768px){
     .sidebar{
         display: none;
