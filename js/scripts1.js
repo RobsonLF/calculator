@@ -1,8 +1,8 @@
 const btnAddDadosFiada = document.querySelector('#btnAddDadosFiada');
 const btnLimparDadosFiada = document.querySelector('#btnLimparDadosFiada');
 
-btnAddDadosFiada.addEventListener('click',AddDadosTabelaDiam)
-
+btnAddDadosFiada.addEventListener('click',AddDadosTabelaDiam);
+btnLimparDadosFiada.addEventListener('click', LimparDadosTabelaDiam);
 
 function AddDadosTabelaDiam(){
     const espessura = parseFloat(document.querySelector('#espessura').value);
@@ -46,6 +46,29 @@ function AddDadosTabelaDiam(){
     linha.cells[3].innerText = diamInterno;
     linha.cells[4].innerText = angulo;
     linha.cells[5].innerText = junta;
-    
 }
 
+function LimparDadosTabelaDiam(){
+    const tabela = document.querySelector('#tabelaDiam');
+    const linha = tabela.tBodies[0].rows[0];
+    document.querySelector('#espessura').value = '';
+    document.querySelector('#diamExt').value = '';
+    document.querySelector('#angulo').value = '';
+    document.querySelector('#junta').value = '';
+    document.querySelector('#espessura').focus();
+    linha.cells[1].innerText = '-';
+    linha.cells[2].innerText = '-';
+    linha.cells[3].innerText = '-';
+    linha.cells[4].innerText = '-';
+    linha.cells[5].innerText = '-';
+    return;
+}
+
+/*
+    const espessura = parseFloat(document.querySelector('#espessura').value);
+    const diamExterno = parseFloat(document.querySelector('#diamExt').value);
+    const angulo = parseFloat(document.querySelector('#angulo').value);
+    const junta = parseFloat(document.querySelector('#junta').value);
+    const tabela = document.querySelector('#tabelaDiam');
+    const linha = tabela.tBodies[0].rows[0];
+*/
