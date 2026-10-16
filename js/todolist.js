@@ -68,7 +68,7 @@ function criaLi(){
     label.setAttribute('class','mb-0 flex-grow-1 text-start');
     label.setAttribute('for','firstCheckboxStretched');
     buttonApagar.setAttribute('type','button');
-    buttonApagar.setAttribute('class','btn-outline theme-danger apagar');
+    buttonApagar.setAttribute('class','btn btn-outline-danger apagar');
 
     div.appendChild(checkbox);
     div.appendChild(label);
