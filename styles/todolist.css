@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --font-Primary: 'DM Sans', sans-serif;
+    --font-Secondery: 'Inter', sans-serif;
+    --font-Tertiary: 'Montserrat', sans-serif;
+    --font-Quaternary: 'Space Grotesk', sans-serif;
+    --sidebar: #438494;
+    --topbar: #e5e5e5;
+    --page:#ffffff;
+    --surface: #f8fafa;
+    --ink: #202b32;
+    --muted: #91a1a9;
+    --line: #d4d9db;
+    --item-menu:#d3e6e9;
+    --item-menu-active:#ff9d55
+}
+
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--page);
+    font-family: var(--font-Quaternary);
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+.main{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 25px;
+    text-align: center;
+    background-color: var(--topbar);
+    border-radius: 5px;
+}
+
+form {
+    margin: 0 auto;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.form-input{
+ font-family: var(--font-Tertiary);   
+}

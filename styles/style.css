@@ -150,3 +150,26 @@ body{
         margin: 0 auto;
     }
 }
+
+
+/* CSS DA TODO LIST*/
+.main{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 25px;
+    text-align: center;
+    background-color: var(--topbar);
+    border-radius: 5px;
+}
+
+form {
+    margin: 0 auto;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.form-input{
+ font-family: var(--font-Tertiary);   
+}
