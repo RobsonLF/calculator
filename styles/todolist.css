@@ -17,16 +17,11 @@
     --item-menu-active:#ff9d55
 }
 
-*{
-    box-sizing: border-box;
-}
 body{
     margin: 0;
-    padding: 0;
-    
     font-family: var(--font-Quaternary);
     font-size: 1.2em;
-    line-height: 1.5em;
+    
 }
 .main{
     padding-top: 25px;
@@ -34,7 +29,7 @@ body{
     margin-top: 25px;
     text-align: center;
     background-color: var(--topbar);
-    border-radius: 5px;
+    
 }
 
 form {
