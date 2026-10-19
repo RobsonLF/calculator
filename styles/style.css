@@ -137,7 +137,7 @@ body{
     padding:30px;
 }
 
-#tabelaDiam{
+#tabelaDiam, #tabelaTijolo{
     text-align: center;
 }
 @media (max-width: 768px){
