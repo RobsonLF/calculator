@@ -52,7 +52,6 @@ function AddDadosTabelaDiam(){
     linha.cells[4].innerText = angulo;
     linha.cells[5].innerText = junta;
 }
-
 function LimparDadosTabelaDiam(){
     const tabela = document.querySelector('#tabelaDiam');
     const linha = tabela.tBodies[0].rows[0];
@@ -92,8 +91,9 @@ function AddTijolo(){
         document.querySelector('#cordaInterna').focus();
         return;
     }
-    if((parseFloat(cordaInterna.value) - parseFloat(cordaExterna.value)) === 0){
+    if((parseFloat(cordaExterna.value) - parseFloat(cordaInterna.value)) == 0){
         fechamentoTijolo = 0;
+        inserirLinha(tabela, indice, cordaExterna, cordaInterna ,fechamentoTijolo,0);
     }else if((parseFloat(cordaExterna.value) - parseFloat(cordaInterna.value)) < 0){
         window.alert('A corda interna deve ser menor que a corda externa. Verifique os valores inseridos.');
         cordaExterna.value = '';
@@ -104,10 +104,8 @@ function AddTijolo(){
     else{
         fechamentoTijolo = calcularFechamento(espFiada, juntaFiada, parseFloat(cordaExterna.value), parseFloat(cordaInterna.value));
         anguloTijolo = calculoAnguloTijolo(espFiada, parseFloat(cordaExterna.value), parseFloat(cordaInterna.value));
+        inserirLinha(tabela, indice, cordaExterna, cordaInterna ,fechamentoTijolo, anguloTijolo);
     }
-
-    inserirLinha(tabela, indice, cordaExterna, cordaInterna ,fechamentoTijolo, anguloTijolo);
-
 }
 function calcularFechamento(esp, junta, cordaExt, cordaInt){
     let fechamento = (esp*2)*(cordaExt + junta)/(cordaExt - cordaInt);
