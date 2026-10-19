@@ -1,9 +1,14 @@
 const btnAddDadosFiada = document.querySelector('#btnAddDadosFiada');
 const btnLimparDadosFiada = document.querySelector('#btnLimparDadosFiada');
+const btnAddTijolo = document.querySelector('#btnAddTijolos');
+const btnLimparDadosTijolo = document.querySelector('#btnLimparTijolos');
 
 btnAddDadosFiada.addEventListener('click',AddDadosTabelaDiam);
 btnLimparDadosFiada.addEventListener('click', LimparDadosTabelaDiam);
+btnAddTijolo.addEventListener('click',AddTijolo);
+//btnLimparDadosTijolo.addEventListener('click',LimparDadosTijolo);
 
+//###############################################TABELA DE DIAMETROS##############################################
 function AddDadosTabelaDiam(){
     const espessura = parseFloat(document.querySelector('#espessura').value);
     const diamExterno = parseFloat(document.querySelector('#diamExt').value);
@@ -62,6 +67,70 @@ function LimparDadosTabelaDiam(){
     linha.cells[4].innerText = '-';
     linha.cells[5].innerText = '-';
     return;
+}
+//###############################################TABELA DE FORMATOS##############################################
+
+function AddTijolo(){
+    let tabela = document.querySelector('#tabelaTijolo');
+    const espFiada = parseFloat(document.querySelector('#espessura').value);
+    const juntaFiada = parseFloat(document.querySelector('#junta').value);
+    
+    const cordaExterna = document.querySelector('#cordaExterna');
+    const cordaInterna = document.querySelector('#cordaInterna');
+    const indice = tabela.rows.length;
+    
+    let fechamentoTijolo;
+    let anguloTijolo;
+
+    if (isNaN(parseFloat(cordaExterna.value))){
+        window.alert('Por favor, insira um valor numérico válido para a corda externa.');
+        document.querySelector('#cordaExterna').focus();
+        return;
+    }
+    if (isNaN(parseFloat(cordaInterna.value))){
+        window.alert('Por favor, insira um valor numérico válido para a corda interna.');
+        document.querySelector('#cordaInterna').focus();
+        return;
+    }
+    if((parseFloat(cordaInterna.value) - parseFloat(cordaExterna.value)) === 0){
+        fechamentoTijolo = 0;
+    }else if((parseFloat(cordaExterna.value) - parseFloat(cordaInterna.value)) < 0){
+        window.alert('A corda interna deve ser menor que a corda externa. Verifique os valores inseridos.');
+        cordaExterna.value = '';
+        cordaInterna.value = '';
+        cordaExterna.focus();
+        return;
+    }
+    else{
+        fechamentoTijolo = calcularFechamento(espFiada, juntaFiada, parseFloat(cordaExterna.value), parseFloat(cordaInterna.value));
+        anguloTijolo = calculoAnguloTijolo();
+    }
+
+    inserirLinha(tabela, indice, cordaExterna, cordaInterna ,fechamentoTijolo, anguloTijolo);
+
+}
+function calcularFechamento(esp, junta, cordaExt, cordaInt){
+    let fechamento = (esp*2)*(cordaExt + junta)/(cordaExt - cordaInt);
+    return fechamento;
+}
+function inserirLinha(tabela, indice, cordaExt, cordaInt, fechamentoTijolo,anguloTijolo){
+    
+    let linha = document.createElement('tr');
+
+    linha.innerHTML = `
+    <td>${indice}</td>
+    <td>${cordaExt.value}</td>
+    <td>${cordaInt.value}</td>
+    <td>${fechamentoTijolo.toFixed(2)}</td>
+    <td>${anguloTijolo.toFixed(2)}</td>
+    `;
+    tabela.tBodies[0].appendChild(linha);
+    cordaExt.value = '';
+    cordaInt.value  ='';
+    cordaExt.focus();
+}
+function calculoAnguloTijolo(){
+    return 0;
 }
 
 /*
