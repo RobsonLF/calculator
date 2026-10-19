@@ -103,7 +103,7 @@ function AddTijolo(){
     }
     else{
         fechamentoTijolo = calcularFechamento(espFiada, juntaFiada, parseFloat(cordaExterna.value), parseFloat(cordaInterna.value));
-        anguloTijolo = calculoAnguloTijolo();
+        anguloTijolo = calculoAnguloTijolo(espFiada, parseFloat(cordaExterna.value), parseFloat(cordaInterna.value));
     }
 
     inserirLinha(tabela, indice, cordaExterna, cordaInterna ,fechamentoTijolo, anguloTijolo);
@@ -129,15 +129,9 @@ function inserirLinha(tabela, indice, cordaExt, cordaInt, fechamentoTijolo,angul
     cordaInt.value  ='';
     cordaExt.focus();
 }
-function calculoAnguloTijolo(){
-    return 0;
+function calculoAnguloTijolo(esp, cordaExt, cordaInt){
+    const pi = 3.141593;
+    let ang = (((cordaExt-cordaInt)/esp)*(180/pi));
+    return ang;
 }
 
-/*
-    const espessura = parseFloat(document.querySelector('#espessura').value);
-    const diamExterno = parseFloat(document.querySelector('#diamExt').value);
-    const angulo = parseFloat(document.querySelector('#angulo').value);
-    const junta = parseFloat(document.querySelector('#junta').value);
-    const tabela = document.querySelector('#tabelaDiam');
-    const linha = tabela.tBodies[0].rows[0];
-*/

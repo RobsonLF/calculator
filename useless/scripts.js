@@ -54,12 +54,13 @@ function calcularfechamento(){
     const junt = parseFloat(document.getElementById('junta').value);
     const Tabela = document.getElementById('tbTijolos');
     const linha = document.createElement('tr');
-    const indiceTijolo = Tabela.rows.length;
+    conieijolo = Tabela.rows.length;
     let fechamento;
 
     if (isNaN(cordaExt)){
         window.alert('Por favor, insira um valor numérico válido para a corda externa.');
-        document.getElementById('cordaExterna').focus();
+        document.getElementById('cordaExterna')
+    
         return;
     }
     if (isNaN(cordaInt)){
@@ -78,7 +79,7 @@ function calcularfechamento(){
     }
     else{
         fechamento = (esp * 2)*(cordaExt + junt) / (cordaExt - cordaInt);
-    }
+fasdfasdfadsfasfasffadfafsafadfasfsafdfjfaçkjfa    }
     linha.innerHTML = `
     <td>${indiceTijolo}</td>
     <td>${cordaExt}</td>
