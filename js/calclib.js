@@ -112,16 +112,26 @@ function calcularFechamento(esp, junta, cordaExt, cordaInt){
     return fechamento;
 }
 function inserirLinha(tabela, indice, cordaExt, cordaInt, fechamentoTijolo,anguloTijolo){
-    
     let linha = document.createElement('tr');
+    const celCheckbox = linha.insertCell();
+    const newCheckbox  = document.createElement('input');
 
-    linha.innerHTML = `
-    <td>${indice}</td>
-    <td>${cordaExt.value}</td>
-    <td>${cordaInt.value}</td>
-    <td>${fechamentoTijolo.toFixed(2)}</td>
-    <td>${anguloTijolo.toFixed(2)}</td>
-    `;
+    newCheckbox.type = 'checkbox';
+    newCheckbox.id = 'checksecondary';
+    newCheckbox.className = 'check theme-secondary';
+    newCheckbox.setAttribute('aria-label', `Selecionar tijolo ${indice}`);
+
+    celCheckbox.appendChild(newCheckbox);
+
+    [indice,
+        cordaExt.value,
+        cordaInt.value,
+        fechamentoTijolo.toFixed(2),
+        anguloTijolo.toFixed(2)
+    ].forEach(valor =>{
+        const celula = linha.insertCell();
+        celula.textContent = valor;
+    });
     tabela.tBodies[0].appendChild(linha);
     cordaExt.value = '';
     cordaInt.value  ='';
@@ -132,4 +142,13 @@ function calculoAnguloTijolo(esp, cordaExt, cordaInt){
     let ang = (((cordaExt-cordaInt)/esp)*(180/pi));
     return ang;
 }
+function limparTijolos(){
+    const tabela = document.querySelector('#tabelaTijolo');
+    const corpoTabela = tabela.tBodies[0];
+
+    for (let)
+
+    if 
+}
+
 
