@@ -2,11 +2,19 @@ const btnAddDadosFiada = document.querySelector('#btnAddDadosFiada');
 const btnLimparDadosFiada = document.querySelector('#btnLimparDadosFiada');
 const btnAddTijolo = document.querySelector('#btnAddTijolos');
 const btnLimparDadosTijolo = document.querySelector('#btnLimparTijolos');
+const inputCordaInterna = document.querySelector('#cordaInterna');
+
+
+
 
 btnAddDadosFiada.addEventListener('click',AddDadosTabelaDiam);
 btnLimparDadosFiada.addEventListener('click', LimparDadosTabelaDiam);
 btnAddTijolo.addEventListener('click',AddTijolo);
-//btnLimparDadosTijolo.addEventListener('click',LimparDadosTijolo);
+btnLimparDadosTijolo.addEventListener('click',limparTabelaTijolos);
+inputCordaInterna.addEventListener('blur', function(){
+    btnAddTijolo.focus();
+});
+
 
 //###############################################TABELA DE DIAMETROS##############################################
 function AddDadosTabelaDiam(){
@@ -142,13 +150,22 @@ function calculoAnguloTijolo(esp, cordaExt, cordaInt){
     let ang = (((cordaExt-cordaInt)/esp)*(180/pi));
     return ang;
 }
-function limparTijolos(){
+
+function limparTabelaTijolos(){
+    const checkboxMarcado = document.querySelectorAll('#tabelaTijolo tbody input[type="checkbox"]:checked');
     const tabela = document.querySelector('#tabelaTijolo');
-    const corpoTabela = tabela.tBodies[0];
+    if (checkboxMarcado.length ===0){
+        alert("Nenhuma linha selecionada para exclusão!");
+        return;
+    }
 
-    for (let)
+    checkboxMarcado.forEach(checkbox => {
+        const linha = checkbox.closest('tr');
+        linha.remove();
+    });
 
-    if 
+    Array.from(tabela.tBodies[0].rows).forEach((linha, indice) => {
+        linha.cells[1].textContent = indice + 1;
+        linha.cells[0].querySelector('input').setAttribute('aria-label', `Selecionar tijolo ${indice + 1}`);
+    });
 }
-
-
