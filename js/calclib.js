@@ -2,19 +2,20 @@ const btnAddDadosFiada = document.querySelector('#btnAddDadosFiada');
 const btnLimparDadosFiada = document.querySelector('#btnLimparDadosFiada');
 const btnAddTijolo = document.querySelector('#btnAddTijolos');
 const btnLimparDadosTijolo = document.querySelector('#btnLimparTijolos');
+const btnCalcular = document.querySelector('#CalcularComposicao');
+const btnLimparCalculo = document.querySelector('#LimparComposicao');
 const inputCordaInterna = document.querySelector('#cordaInterna');
 
 
-
-
 btnAddDadosFiada.addEventListener('click',AddDadosTabelaDiam);
+
 btnLimparDadosFiada.addEventListener('click', LimparDadosTabelaDiam);
 btnAddTijolo.addEventListener('click',AddTijolo);
 btnLimparDadosTijolo.addEventListener('click',limparTabelaTijolos);
 inputCordaInterna.addEventListener('blur', function(){
     btnAddTijolo.focus();
 });
-
+btnCalcular.addEventListener('click',calcularComp);
 
 //###############################################TABELA DE DIAMETROS##############################################
 function AddDadosTabelaDiam(){
@@ -168,4 +169,105 @@ function limparTabelaTijolos(){
         linha.cells[1].textContent = indice + 1;
         linha.cells[0].querySelector('input').setAttribute('aria-label', `Selecionar tijolo ${indice + 1}`);
     });
+}
+//###############################################CALCULO DE COMP##############################################
+
+function calcularComp(){
+    const tabelaDadosFiada = document.querySelector('#tabelaDiam');
+    const espessura = parseFloat(tabelaDadosFiada.tBodies[0].rows[0].cells[1].textContent);
+    const diamExt = parseFloat(tabelaDadosFiada.tBodies[0].rows[0].cells[2].textContent);
+    const diamInt = parseFloat(tabelaDadosFiada.tBodies[0].rows[0].cells[3].textContent);
+    const ang = parseFloat(tabelaDadosFiada.tBodies[0].rows[0].cells[4].textContent);
+    const junta = parseFloat(tabelaDadosFiada.tBodies[0].rows[0].cells[5].textContent);
+
+    const tabelaTijolos = document.querySelector('#tabelaTijolo');
+    const nlinhas = tabelaTijolos.tBodies[0].rows;
+    let indice = 0
+    if (nlinhas.length > 1){
+        for (let cont = 0; cont < nlinhas.length; cont++){
+            for (let cont1 = cont+1;cont1 < nlinhas.length; cont1++){
+                const tijACordaExt = parseFloat(tabelaTijolos.tBodies[0].rows[cont].cells[2].textContent);
+                const tijACordaInt = parseFloat(tabelaTijolos.tBodies[0].rows[cont].cells[3].textContent);
+                const tijBCordaExt = parseFloat(tabelaTijolos.tBodies[0].rows[cont1].cells[2].textContent);
+                const tijBCordaInt = parseFloat(tabelaTijolos.tBodies[0].rows[cont1].cells[3].textContent);
+                indice += 1;
+                const { qtdTijA, qtdTijB } = calculo(
+                    espessura,
+                    diamExt,
+                    diamInt,
+                    ang,
+                    junta,
+                    tijACordaExt,
+                    tijACordaInt,
+                    tijBCordaExt,
+                    tijBCordaInt
+                );
+                if (qtdTijA<= 0 || qtdTijB <- 0){
+                    inserirCardVermelho({
+                        tijolo1:`${tijACordaExt} - ${tijACordaInt}`,
+                        tijolo2:`${tijBCordaExt} - ${tijBCordaInt}`,
+                        qtA: qtdTijA,
+                        qtB: qtdTijB,
+                        header: `Arranjo ${indice}`
+                    });
+                }else{
+                    inserirCardVerde({
+                        tijolo1:`${tijACordaExt} - ${tijACordaInt}`,
+                        tijolo2:`${tijBCordaExt} - ${tijBCordaInt}`,
+                        qtA: qtdTijA,
+                        qtB: qtdTijB,
+                        header: `Arranjo ${indice}`
+                    });
+                }
+            }
+        }
+    }
+}
+function inserirCardVerde({tijolo1, tijolo2, qtA, qtB, header}){
+    const grid = document.querySelector('.cards-grid');
+    if (!grid){
+        console.log("Conteiner .cards-grid não encontrado. Verifique o HTML.");
+        return;
+    }
+    const card = document.createElement('div');
+    card.className = "card border-success mb-3";
+    card.style.maxWidth = "15rem";
+
+    card.innerHTML = `
+        <div class="card-header text-success bg-transparent border-success">${header}</div>
+        <div class="card-body text-success">
+        <h5 class="card-title">${tijolo1} - Qtd.: ${qtA}</h5> <br>
+        <h5 class="card-title">${tijolo2} - Qtd.: ${qtB}</h5>
+    </div>
+    `;
+    grid.appendChild(card);
+}
+function inserirCardVermelho({tijolo1, tijolo2, qtA, qtB, header}){
+    const grid = document.querySelector('.cards-grid');
+    if (!grid){
+        console.log("Conteiner .cards-grid não encontrado. Verifique o HTML.");
+        return;
+    }
+    const card = document.createElement('div');
+    card.className = "card border-danger mb-3";
+    card.style.maxWidth = "15rem";
+
+    card.innerHTML = `
+        <div class="card-header text-danger bg-transparent border-danger">${header}</div>
+        <div class="card-body text-danger">
+            <h5 class="card-title">${tijolo1} - Qtd.: ${qtA}</h5> <br>
+            <h5 class="card-title">${tijolo2} - Qtd.: ${qtB}</h5>
+        </div>
+    `;
+    grid.appendChild(card);
+}
+function calculo(esp, dE, dI, ang, jun, tijACordaE, tijACordaI, tijBCordaE, tijBCordaI ){
+    const pi = Math.PI;
+    let qtdTijA = (pi * ( dI* ( tijBCordaE + jun ) - dE * ( tijBCordaI + jun ))) / (( tijBCordaE + jun ) * (tijACordaI + jun) - ( tijACordaE + jun) * (tijBCordaI + jun));
+    let qtdTijB = ( dE * pi - ( qtdTijA ) * (tijACordaE + jun)) / (tijBCordaE + jun);
+
+    qtdTijA = qtdTijA * ang / 360;
+    qtdTijB = qtdTijB * ang / 360;
+
+    return {qtdTijA: qtdTijA.toFixed(1),qtdTijB: qtdTijB.toFixed(1) };
 }

@@ -140,6 +140,13 @@ body{
 #tabelaDiam, #tabelaTijolo{
     text-align: center;
 }
+.row-cols-sm-auto > .composicoes-resultados{
+    flex: 0 0 100%;
+    width: 100%;
+}
+.cards-grid > .card{
+    width: 15rem;
+}
 @media (max-width: 768px){
     .sidebar{
         display: none;
@@ -150,6 +157,4 @@ body{
         margin: 0 auto;
     }
 }
-
-
 
